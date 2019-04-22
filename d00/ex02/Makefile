@@ -47,6 +47,7 @@ CC =			clang++
 FLAGS =			-Wall \
 				-Wextra \
 				-Werror \
+				-std=c++98 -pedantic
 				#-fsanitize=address
 
 HEADERS_FLAGS =	-I $(HEADERS_DIR)	\

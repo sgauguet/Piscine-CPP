@@ -21,7 +21,7 @@ SRCS_DIR =			.
 
 OBJS_DIR =			./objs
 
-HEADERS_DIR =		./includes
+HEADERS_DIR =		.
 
 LIB_DIR =			./libft
 
@@ -30,14 +30,12 @@ LIB_HEADERS_DIR =	./libft/includes
 #------------------------------------------------------------------------------#
 # Sources
 
-SRCS =			Phonebook.cpp \
-				Contact.cpp \
+SRCS =			Fixed.class.cpp \
 				main.cpp
 
 OBJS =			$(SRCS:%.cpp=$(OBJS_DIR)/%.o)
 
-HEADERS =		$(HEADERS_DIR)/Phonebook.hpp \
-				$(HEADERS_DIR)/Contact.hpp
+HEADERS =		$(HEADERS_DIR)/Fixed.class.hpp
 
 #------------------------------------------------------------------------------#
 # Compilation
@@ -48,7 +46,8 @@ CC =			clang++
 
 FLAGS =			-Wall \
 				-Wextra \
-				-Werror
+				-Werror \
+				-std=c++98 -pedantic
 				#-fsanitize=address
 
 HEADERS_FLAGS =	-I $(HEADERS_DIR)

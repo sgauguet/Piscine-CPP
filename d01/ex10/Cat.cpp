@@ -15,15 +15,15 @@ std::string Cat::getFileContent (std::string filename) const {
 	std::ifstream inputfile(filename.data(), std::ifstream::in);
 	std::ostringstream sscontent;
 	std::string content;
+	struct stat s;
 	if (!inputfile.good()) {
 		_displayErrors(1, filename);
 		return content;
 	}
-	inputfile.seekg(0, std::ios::end);
-   	if( !inputfile.good()) {
-   		_displayErrors(2, filename);
+	else if (stat(filename.data(), &s) == 0 && S_ISDIR(s.st_mode)) {
+		_displayErrors(2, filename);
    		return content;
-   	};
+	}
 	sscontent << inputfile.rdbuf();
 	content = sscontent.str();
 	inputfile.close();
@@ -49,8 +49,8 @@ void 	Cat::printFiles(char **argv) const {
 void	Cat::_displayErrors(int error_code, std::string filename) const {
 	std::ostringstream message;
 	switch (error_code){
-		case 1 : message << "cat:" << filename << "Aucun fichier ou dossier de ce type" ; break;
-		case 2 : message << "cat:" << filename << "est un dossier." ; break;
+		case 1 : message << "cat: " << filename << ": Aucun fichier ou dossier de ce type" ; break;
+		case 2 : message << "cat: " << filename << ": est un dossier" ; break;
 	}
 	std::cout << message.str() << std::endl;
 	return ;

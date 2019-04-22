@@ -115,6 +115,12 @@ int Fixed::toInt( void ) const {
 	return roundf(this->_value >> this->_f);
 }
 
+std::string Fixed::toString(void) const {
+	std::ostringstream ss;
+	ss << this->toFloat();
+	return ss.str();
+}
+
 std::ostream & operator<<(std::ostream & o, Fixed const & rhs) {
 	o << rhs.toFloat();
 	return o;
@@ -143,3 +149,5 @@ Fixed &	Fixed::max(Fixed & v1, Fixed & v2) {
 		return v1;
 	return v2;
 }
+
+int const Fixed::_f = 8;

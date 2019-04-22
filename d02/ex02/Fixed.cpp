@@ -9,8 +9,8 @@ Fixed::Fixed(int const n) :  _value(n * 256) {
 Fixed::Fixed(float const r) :  _value(roundf(r * 256)) {
 }
 
-Fixed::Fixed(Fixed const & i) {
-	*this = i;
+Fixed::Fixed(Fixed const & copy) {
+	*this = copy;
 	return ;
 }
 
@@ -143,3 +143,5 @@ Fixed &	Fixed::max(Fixed & v1, Fixed & v2) {
 		return v1;
 	return v2;
 }
+
+int const Fixed::_f = 8;

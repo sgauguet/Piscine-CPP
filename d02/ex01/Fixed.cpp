@@ -12,13 +12,13 @@ Fixed::Fixed(float const r) :  _value(roundf(r * 256)) {
 	std::cout << "Float Constructor called" << std::endl;
 }
 
-Fixed::Fixed(Fixed const & i) {
+Fixed::Fixed(Fixed const & copy) {
 	std::cout << "Copy Constructor called" << std::endl;
-	*this = i;
+	*this = copy;
 	return ;
 }
 
-Fixed::~Fixed( void ) {
+Fixed::~Fixed(void) {
 	std::cout << "Destructor called" << std::endl;
 }
 
@@ -52,3 +52,5 @@ std::ostream & operator<<(std::ostream & o, Fixed const & rhs) {
 	o << rhs.toFloat();
 	return o;
 }
+
+int const Fixed::_f = 8;

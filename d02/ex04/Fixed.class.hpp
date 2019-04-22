@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <cmath>
+#include <sstream>
 
 class Fixed {
 
@@ -36,6 +37,7 @@ public:
 	void setRawBits(int const raw);
 	float toFloat( void ) const;
 	int toInt( void ) const;
+	std::string toString(void) const;
 
 	static Fixed & min(Fixed & v1, Fixed & v2);
 	static Fixed & max(Fixed & v1, Fixed & v2);
@@ -45,7 +47,7 @@ public:
 private:
 
 	int _value;  // Fixed point value.
-	static const int  _f = 8; // Number of fractional bits
+	static const int  _f; // Number of fractional bits
 
 };
 

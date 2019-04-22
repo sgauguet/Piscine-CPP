@@ -31,7 +31,7 @@ int		checkParameters(char **argv) {
 int 	main(int argc, char **argv) {
 
 	if (argc < 4){
-		std:: cout << "usage: ./sed filename s1 (string to replace in file) s2 (new string) \n" ;
+		std:: cout << "usage: ./replace filename s1 (string to replace in file) s2 (new string) \n" ;
 		return 1;
 	}
 	checkParameters(argv);

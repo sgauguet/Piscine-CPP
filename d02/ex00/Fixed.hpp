@@ -8,17 +8,17 @@ class Fixed {
 public: 
 
 	Fixed(void);
-	Fixed(Fixed const & i);
+	Fixed(Fixed const & copy);
 	~Fixed(void);
-
 	Fixed & operator=(Fixed const & rhs);
+
 	int getRawBits(void) const;
 	void setRawBits(int const raw);
 
 private:
 
 	int _value;
-	static const int  f = 8; // Number of fractional bits
+	static const int  _f; // Number of fractional bits
 
 };
  

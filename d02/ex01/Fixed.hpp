@@ -11,7 +11,7 @@ public:
 	Fixed(void);
 	Fixed(int const n);
 	Fixed(float const r);
-	Fixed(Fixed const & i);
+	Fixed(Fixed const & copy);
 	~Fixed(void);
 
 	Fixed & operator=(Fixed const & rhs);
@@ -23,7 +23,7 @@ public:
 private:
 
 	int _value;  // Fixed point value.
-	static const int  _f = 8; // Number of fractional bits
+	static const int  _f; // Number of fractional bits
 
 };
 

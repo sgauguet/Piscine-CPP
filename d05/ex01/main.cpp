@@ -1,0 +1,47 @@
+#include "Bureaucrat.hpp"
+#include "Form.hpp"
+
+int main(void) {
+	Bureaucrat bureaucrat1 = Bureaucrat("Super Boss", 2);
+	Bureaucrat bureaucrat2 = Bureaucrat("Foot soldier", 147);
+	Form form1 = Form("n°1", 14, 12);
+	Form form2 = Form(form1);
+	Form form3 = Form("n°2", 145, 110);
+	Form form4 = form3;
+	Form form5;
+
+	std::cout << bureaucrat1;
+	std::cout << bureaucrat2;
+	std::cout << form1;
+	std::cout << form2;
+	std::cout << form3;
+	std::cout << form4;
+	std::cout << form5;
+	try {
+		std::cout << "Test : creation of a form with grade too high." << std::endl;
+		form5 = Form("error", -5, 150);
+	}
+	catch (std::exception & e) {
+		std::cout << e.what() << std::endl;
+	}
+	try {
+		std::cout << "Signature of form n°1 by bureaucrat 1" << std::endl;
+		form1.beSigned(bureaucrat1);
+		std::cout << form1;
+		std::cout << "Signature of form n°1 by bureaucrat 2" << std::endl;
+		form2.beSigned(bureaucrat2);
+		std::cout << form2;
+	}
+	catch (std::exception & e) {
+		std::cout << e.what() << std::endl;
+	}
+	try {
+		bureaucrat1.signForm(form3);
+		std::cout << form3;
+		bureaucrat2.signForm(form4);
+		std::cout << form4;
+	}
+	catch (std::exception & e) {
+		std::cout << e.what() << std::endl;
+	}
+}
