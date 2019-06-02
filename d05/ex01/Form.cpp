@@ -51,14 +51,52 @@ void Form::beSigned(Bureaucrat & a) {
 }
 
 std::ostream & operator<<(std::ostream & o, Form const & rhs) {
-	o << "Form " << rhs.getName() << ", grade required to sign " << rhs.getGradeSign() << ", grade required to exec " << rhs.getGradeExec() << ", status : " << rhs.getSigned() << "." << std::endl;
+	o << "Form " << rhs.getName() << " requires grade "  << rhs.getGradeSign() << " to be signed " << ", and grade " << rhs.getGradeExec() << " to be executed."  << " Current status : " << rhs.getSigned() << "." << std::endl;
 	return o;
 }
 
+/* GradeTooHighException */
+
+Form::GradeTooHighException::GradeTooHighException(void) {
+	return ;
+}
+
+Form::GradeTooHighException::GradeTooHighException(GradeTooHighException const & copy) {
+	*this = copy;
+	return ;
+}
+
+Form::GradeTooHighException::~GradeTooHighException(void) throw() {
+	return ;
+}
+
+Form::GradeTooHighException & Form::GradeTooHighException::operator=(GradeTooHighException const &) {
+	return *this;
+}
+
 const char * Form::GradeTooHighException::what(void) const throw() {
-	return ("Form grade too high.");
+	return ("Grade too high.");
+}
+
+/* GradeTooLowException */
+
+Form::GradeTooLowException::GradeTooLowException(void) {
+	return ;
+}
+
+Form::GradeTooLowException::GradeTooLowException(GradeTooLowException const & copy) {
+	*this = copy;
+	return ;
+}
+
+Form::GradeTooLowException::~GradeTooLowException(void) throw() {
+	return ;
+}
+
+Form::GradeTooLowException & Form::GradeTooLowException::operator=(GradeTooLowException const &) {
+	return *this;
 }
 
 const char * Form::GradeTooLowException::what(void) const throw() {
-	return ("Form grade too low.");
+	return ("Grade too low.");
 }

@@ -11,7 +11,7 @@ public:
 	Bureaucrat(void);
 	Bureaucrat(std::string name, int grade);
 	Bureaucrat(Bureaucrat const & copy);
-	~Bureaucrat(void);
+	virtual ~Bureaucrat(void);
 	Bureaucrat & operator=(Bureaucrat const & b);
 
 	std::string const getName(void) const;
@@ -22,12 +22,20 @@ public:
 	class GradeTooHighException : public std::exception 
 	{
 	public:
+		GradeTooHighException(void);
+		GradeTooHighException(GradeTooHighException const & copy);
+		~GradeTooHighException(void) throw();
+		GradeTooHighException & operator=(GradeTooHighException const & b);
 		virtual const char * what() const throw();
 	};
 
 	class GradeTooLowException : public std::exception 
 	{
 	public:
+		GradeTooLowException(void);
+		GradeTooLowException(GradeTooLowException const & copy);
+		~GradeTooLowException(void) throw();
+		GradeTooLowException & operator=(GradeTooLowException const & b);
 		virtual const char * what() const throw();
 	};
 

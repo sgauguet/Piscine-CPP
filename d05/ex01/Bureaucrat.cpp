@@ -51,6 +51,8 @@ void Bureaucrat::decrementGrade(void) {
 }
 
 void Bureaucrat::signForm(Form & form) const {
+	if (form.getSigned() == true)
+		return ;
 	try {
 		form.beSigned(const_cast< Bureaucrat & >(*this));
 		std::cout << this->getName() << " signs form " << form.getName() << std::endl;
@@ -65,8 +67,46 @@ std::ostream & operator<<(std::ostream & o, Bureaucrat const & rhs) {
 	return o;
 }
 
+/* GradeTooHighException */
+
+Bureaucrat::GradeTooHighException::GradeTooHighException(void) {
+	return ;
+}
+
+Bureaucrat::GradeTooHighException::GradeTooHighException(GradeTooHighException const & copy) {
+	*this = copy;
+	return ;
+}
+
+Bureaucrat::GradeTooHighException::~GradeTooHighException(void) throw() {
+	return ;
+}
+
+Bureaucrat::GradeTooHighException & Bureaucrat::GradeTooHighException::operator=(GradeTooHighException const &) {
+	return *this;
+}
+
 const char * Bureaucrat::GradeTooHighException::what(void) const throw() {
 	return ("Grade too high.");
+}
+
+/* GradeTooLowException */
+
+Bureaucrat::GradeTooLowException::GradeTooLowException(void) {
+	return ;
+}
+
+Bureaucrat::GradeTooLowException::GradeTooLowException(GradeTooLowException const & copy) {
+	*this = copy;
+	return ;
+}
+
+Bureaucrat::GradeTooLowException::~GradeTooLowException(void) throw() {
+	return ;
+}
+
+Bureaucrat::GradeTooLowException & Bureaucrat::GradeTooLowException::operator=(GradeTooLowException const &) {
+	return *this;
 }
 
 const char * Bureaucrat::GradeTooLowException::what(void) const throw() {

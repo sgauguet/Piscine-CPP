@@ -14,7 +14,7 @@ public:
 	Form(void);
 	Form(std::string name, int sign, int exec);
 	Form(Form const & copy);
-	~Form(void);
+	virtual ~Form(void);
 	Form & operator=(Form const & b);
 
 	std::string const getName(void) const;
@@ -26,12 +26,20 @@ public:
 	class GradeTooHighException : public std::exception 
 	{
 	public:
+		GradeTooHighException(void);
+		GradeTooHighException(GradeTooHighException const & copy);
+		~GradeTooHighException(void) throw();
+		GradeTooHighException & operator=(GradeTooHighException const & b);
 		virtual const char * what() const throw();
 	};
 
 	class GradeTooLowException : public std::exception 
 	{
 	public:
+		GradeTooLowException(void);
+		GradeTooLowException(GradeTooLowException const & copy);
+		~GradeTooLowException(void) throw();
+		GradeTooLowException & operator=(GradeTooLowException const & b);
 		virtual const char * what() const throw();
 	};
 

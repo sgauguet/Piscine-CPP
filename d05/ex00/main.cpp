@@ -9,14 +9,19 @@ int main(void) {
 
 	std::cout << hermes;
 	std::cout << bob;
+	std::cout << "---------- Test - Copy constructor ----------" << std::endl;
 	std::cout << copy;
+	std::cout << "---------- Test - Default constructor ----------" << std::endl;
 	std::cout << x;
 	try {
+		std::cout << "---------- Test - increment ----------" << std::endl;
 		hermes.incrementGrade();
-		std::cout << "test increment : " << hermes;
+		std::cout << hermes;
+		std::cout << "---------- Test - decrement ----------" << std::endl;
 		hermes.decrementGrade();
-		std::cout << "test decrement: " << hermes;
-		while (i < 37) {
+		std::cout << hermes;
+		std::cout << "---------- Test - too high exception ----------" << std::endl;
+		while (i < 100) {
 			hermes.incrementGrade();
 			std::cout << hermes;
 			i++;
@@ -31,10 +36,11 @@ int main(void) {
 	catch (std::exception & e){
 		std::cout << "Exception 3 catched : " << e.what() << std::endl;
 	}
+	std::cout << "---------- Test - too low exception ----------" << std::endl;
 	try {
 		Bureaucrat superbob = Bureaucrat("Super Bobby", 151);
 	}
 	catch (std::exception & e){
-		std::cout << "Exception 3 catched : " << e.what() << std::endl;
+		std::cout << "Exception catched : " << e.what() << std::endl;
 	}
 }
