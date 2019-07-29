@@ -9,20 +9,41 @@ OfficeBlock::OfficeBlock(Intern & intern, Bureaucrat & sign, Bureaucrat & exec) 
 }
 
 OfficeBlock::~OfficeBlock(void) {
+	if (this->_intern != NULL)
+		delete this->_intern;
+	if (this->_signingBureaucrat != NULL)
+		delete this->_signingBureaucrat ;
+	if (this->_executingBureaucrat != NULL)
+		delete this->_executingBureaucrat;
 	return ;
 }
 
-void  OfficeBlock::setIntern(Intern & intern) {
+int  OfficeBlock::getIntern(void) {
+	int ret = (this->_intern == NULL) ? 0 : 1;
+	return ret;
+}
+
+int  OfficeBlock::getSigner(void) {
+	int ret = (this->_signingBureaucrat == NULL) ? 0 : 1;
+	return ret;
+}
+
+int  OfficeBlock::getExecutor(void) {
+	int ret = (this->_executingBureaucrat == NULL) ? 0 : 1;
+	return ret;
+}
+
+void OfficeBlock::setIntern(Intern & intern) {
 	if (&intern != NULL)
 		this->_intern = &intern;
 }
 
-void  OfficeBlock::setSigner(Bureaucrat & sign) {
+void OfficeBlock::setSigner(Bureaucrat & sign) {
 	if (&sign != NULL)
 		this->_signingBureaucrat = &sign;
 }
 
-void  OfficeBlock::setExecutor(Bureaucrat & exec) {
+void OfficeBlock::setExecutor(Bureaucrat & exec) {
 	if (&exec != NULL)
 		this->_executingBureaucrat = &exec;
 }

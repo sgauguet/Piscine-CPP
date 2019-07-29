@@ -15,6 +15,9 @@ public:
 	OfficeBlock(Intern & intern, Bureaucrat & sign, Bureaucrat & exec);
 	virtual ~OfficeBlock(void);
 
+	int getIntern(void);
+	int getSigner(void);
+	int getExecutor(void);
 	void setIntern(Intern & intern);
 	void setSigner(Bureaucrat & sign);
 	void setExecutor(Bureaucrat & exec);
